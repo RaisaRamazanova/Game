@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController{
     lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
+    
     var flipCount = 0 { didSet { flipCountLabel.text = "Flips: \(flipCount)" } }
     var emojiChoices = ["😉", "😜", "🤢", "👻", "👺", "😈", "😀", "😼"]
     var emoji = [Int:String]()
@@ -22,8 +23,7 @@ class ViewController: UIViewController{
     }
     
     @IBAction func restartGame(_ sender: UIButton) {
-        game.restartGame()
-        game.cards = game.newGame(cardsArray: game.cards)
+        game.cards = game.restartGame(cardsArray: game.cards)
     }
 
     

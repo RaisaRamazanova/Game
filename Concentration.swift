@@ -43,10 +43,16 @@ class Concentration {
         cards = shuffleCards(cards: cardsArray)
         return cards
     }
+    
 
-    func restartGame() {
-        cards.removeAll()
+    func restartGame(cardsArray: [Card]) -> [Card]{
+        var newCards =  cardsArray
+        newCards.removeAll()
+        newCards = [Card]()
+        cards = shuffleCards(cards: newCards)
+        return cards
     }
+    
     
     init(numberOfPairsOfCards: Int) {
         for _ in 0..<numberOfPairsOfCards
