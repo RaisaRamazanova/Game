@@ -37,26 +37,19 @@ class Concentration {
         randomCards.shuffle()
         return randomCards
     }
-    
-    
-    func newGame(cardsArray: [Card]) -> [Card] {
-        cards = shuffleCards(cards: cardsArray)
-        return cards
-    }
-    
 
-    func restartGame(cardsArray: [Card]) -> [Card]{
-        var newCards =  cardsArray
-        newCards.removeAll()
-        newCards = [Card]()
-        cards = shuffleCards(cards: newCards)
-        return cards
+    func restartGame() {
+        for (index, _) in cards.enumerated() {
+            cards[index].isMatched = false
+            cards[index].isFaceUp = false
+        }
+
+        cards = shuffleCards(cards: cards)
     }
     
     
     init(numberOfPairsOfCards: Int) {
-        for _ in 0..<numberOfPairsOfCards
-        {
+        for _ in 0..<numberOfPairsOfCards {
             let card = Card()
             cards += [card, card]
         }

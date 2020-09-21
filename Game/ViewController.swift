@@ -9,31 +9,30 @@
 import UIKit
 
 class ViewController: UIViewController{
-    lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
-    
-    var flipCount = 0 { didSet { flipCountLabel.text = "Flips: \(flipCount)" } }
-    var emojiChoices = ["😉", "😜", "🤢", "👻", "👺", "😈", "😀", "😼"]
-    var emoji = [Int:String]()
+
     @IBOutlet weak var flipCountLabel: UILabel!
     @IBOutlet var cardButtons: [UIButton]!
-
-    
     @IBAction func shuffleButton(_ sender: UIButton) {
         game.cards = game.shuffleCards(cards: game.cards)
     }
-    
-    @IBAction func restartGame(_ sender: UIButton) {
-        game.cards = game.restartGame(cardsArray: game.cards)
+
+    lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
+
+    var flipCount = 0 { didSet { flipCountLabel.text = "Flips: \(flipCount)" } }
+    var emojiChoices = ["😉", "😜", "🤢", "👻", "👺", "😈", "😀", "😼"]
+    var emoji = [Int:String]()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        game.cards = game.shuffleCards(cards: game.cards)
     }
 
-    
-    @IBAction func touchCard(_ sender: UIButton) {
-        flipCount += 1
-        if let cardNumber = cardButtons.firstIndex(of: sender) {
-            game.chooseCard(at: cardNumber)
-            updateViewFromModel()
-        } else {
-            print("chosen card was not in cardButtons")
+    func resetCards() {
+        for index in cardButtons.indices {
+            let button = cardButtons[index]
+            button.backgroundColor =  #colorLiteral(red: 0.999968946, green: 0.6284034579, blue: 0.263615257, alpha: 1)
+            button.setTitle("", for: UIControl.State.normal)
         }
     }
 
@@ -47,6 +46,7 @@ class ViewController: UIViewController{
             } else {
                 button.setTitle("", for: UIControl.State.normal)
                 button.backgroundColor = card.isMatched ? #colorLiteral(red: 0.999968946, green: 0.6284034579, blue: 0.263615257, alpha: 0) : #colorLiteral(red: 0.999968946, green: 0.6284034579, blue: 0.263615257, alpha: 1)
+
             }
         }
     }
@@ -58,5 +58,20 @@ class ViewController: UIViewController{
         }
         return emoji[card.identifier] ?? "?"
     }
-}
 
+    @IBAction func restartGame(_ sender: UIButton) {
+        resetCards()
+        game.restartGame()
+    }
+
+    @IBAction func touchCard(_ sender: UIButton) {
+        flipCount += 1
+        if let cardNumber = cardButtons.firstIndex(of: sender) {
+            game.chooseCard(at: cardNumber)
+            updateViewFromModel()
+        } else {
+            print("chosen card was not in cardButtons")
+        }
+    }
+
+}
