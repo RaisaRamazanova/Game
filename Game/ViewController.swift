@@ -17,8 +17,9 @@ class ViewController: UIViewController{
     @IBOutlet var cardButtons: [UIButton]!
 
     @IBAction func restartGame(_ sender: UIButton) {
-        game = nil
         game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
+        self.viewDidLoad()
+        self.viewWillAppear(true)
     }
 
     
