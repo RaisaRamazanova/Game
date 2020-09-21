@@ -32,6 +32,22 @@ class Concentration {
         }
     }
     
+    func shuffleCards(cards: [Card]) -> [Card] {
+        var randomCards = cards
+        randomCards.shuffle()
+        return randomCards
+    }
+    
+    
+    func newGame(cardsArray: [Card]) -> [Card] {
+        cards = shuffleCards(cards: cardsArray)
+        return cards
+    }
+
+    func restartGame() {
+        cards.removeAll()
+    }
+    
     init(numberOfPairsOfCards: Int) {
         for _ in 0..<numberOfPairsOfCards
         {
@@ -39,6 +55,4 @@ class Concentration {
             cards += [card, card]
         }
     }
-    
-    // TODO: Shuffle the cards
 }

@@ -16,10 +16,14 @@ class ViewController: UIViewController{
     @IBOutlet weak var flipCountLabel: UILabel!
     @IBOutlet var cardButtons: [UIButton]!
 
+    
+    @IBAction func shuffleButton(_ sender: UIButton) {
+        game.cards = game.shuffleCards(cards: game.cards)
+    }
+    
     @IBAction func restartGame(_ sender: UIButton) {
-        game = Concentration(numberOfPairsOfCards: (cardButtons.count) / 2)
-        self.viewDidLoad()
-        self.viewWillAppear(true)
+        game.restartGame()
+        game.cards = game.newGame(cardsArray: game.cards)
     }
 
     
@@ -49,9 +53,8 @@ class ViewController: UIViewController{
     
     func emoji(for card: Card) -> String {
         if emoji[card.identifier] == nil, emojiChoices.count > 0 {
-                var timeEmoji = emojiChoices
-                let randomIndex = Int(arc4random_uniform(UInt32(timeEmoji.count)))
-                emoji[card.identifier] = timeEmoji.remove(at: randomIndex)
+                let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
+                emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
         }
         return emoji[card.identifier] ?? "?"
     }
