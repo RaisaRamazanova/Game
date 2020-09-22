@@ -36,7 +36,7 @@
             landmarkType = "3">
             <Locations>
                <Location
-                  uuid = "A90C816A-000B-4688-AE2E-B615793EC486 - fa9d2a3b79e9c77e"
+                  uuid = "A90C816A-000B-4688-AE2E-B615793EC486 - 4fce36fa720c0be"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -51,7 +51,7 @@
                   offsetFromSymbolStart = "16">
                </Location>
                <Location
-                  uuid = "A90C816A-000B-4688-AE2E-B615793EC486 - 12c76f337aa4b781"
+                  uuid = "A90C816A-000B-4688-AE2E-B615793EC486 - eca6a667a46db041"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -66,7 +66,7 @@
                   offsetFromSymbolStart = "12">
                </Location>
                <Location
-                  uuid = "A90C816A-000B-4688-AE2E-B615793EC486 - 351490ea39049460"
+                  uuid = "A90C816A-000B-4688-AE2E-B615793EC486 - cb7559bee7cd91f3"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -81,7 +81,7 @@
                   offsetFromSymbolStart = "326">
                </Location>
                <Location
-                  uuid = "A90C816A-000B-4688-AE2E-B615793EC486 - a651caa8ac497b8d"
+                  uuid = "A90C816A-000B-4688-AE2E-B615793EC486 - 583003fc72807c4d"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -96,7 +96,7 @@
                   offsetFromSymbolStart = "12">
                </Location>
                <Location
-                  uuid = "A90C816A-000B-4688-AE2E-B615793EC486 - 777210b95f37845f"
+                  uuid = "A90C816A-000B-4688-AE2E-B615793EC486 - 8913d9ed81fe81cc"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -123,9 +123,9 @@
             filePath = "Game/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "restartView()"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -139,9 +139,9 @@
             filePath = "Game/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "restartView()"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -9,7 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController{
-
     @IBOutlet weak var flipCountLabel: UILabel!
     @IBOutlet var cardButtons: [UIButton]!
 
@@ -29,6 +28,10 @@ class ViewController: UIViewController{
             let button = cardButtons[index]
             let card = game.cards[index]
             if card.isFaceUp {
+                button.backgroundColor =  #colorLiteral(red: 0.999968946, green: 0.6284034579, blue: 0.263615257, alpha: 1)
+                button.setTitle("", for: UIControl.State.normal)
+            }
+            if game.cards[index].isMatched {
                 button.backgroundColor =  #colorLiteral(red: 0.999968946, green: 0.6284034579, blue: 0.263615257, alpha: 1)
                 button.setTitle("", for: UIControl.State.normal)
             }
@@ -72,5 +75,4 @@ class ViewController: UIViewController{
             print("chosen card was not in cardButtons")
         }
     }
-
 }
