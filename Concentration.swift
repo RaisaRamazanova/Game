@@ -43,7 +43,6 @@ class Concentration {
             cards[index].isMatched = false
             cards[index].isFaceUp = false
         }
-
         cards = shuffleCards(cards: cards)
     }
     

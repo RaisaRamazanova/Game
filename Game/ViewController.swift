@@ -27,8 +27,11 @@ class ViewController: UIViewController{
     func resetCards() {
         for index in cardButtons.indices {
             let button = cardButtons[index]
-            button.backgroundColor =  #colorLiteral(red: 0.999968946, green: 0.6284034579, blue: 0.263615257, alpha: 1)
-            button.setTitle("", for: UIControl.State.normal)
+            let card = game.cards[index]
+            if card.isFaceUp {
+                button.backgroundColor =  #colorLiteral(red: 0.999968946, green: 0.6284034579, blue: 0.263615257, alpha: 1)
+                button.setTitle("", for: UIControl.State.normal)
+            }
         }
     }
 
