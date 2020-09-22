@@ -169,7 +169,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U8V-aQ-xaX">
-                                <rect key="frame" x="30" y="574" width="126" height="46"/>
+                                <rect key="frame" x="124" y="572" width="126" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.99996894599999997" green="0.62840345789999996" blue="0.26361525699999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -178,18 +178,6 @@
                                 </state>
                                 <connections>
                                     <action selector="restartGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZYW-ev-fAS"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lxz-S8-wRC">
-                                <rect key="frame" x="220" y="574" width="141" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.99996894599999997" green="0.62840345789999996" blue="0.26361525699999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Shuffle">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="shuffleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sOG-6W-CNX"/>
                                 </connections>
                             </button>
                         </subviews>

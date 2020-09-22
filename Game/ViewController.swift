@@ -12,9 +12,6 @@ class ViewController: UIViewController{
 
     @IBOutlet weak var flipCountLabel: UILabel!
     @IBOutlet var cardButtons: [UIButton]!
-    @IBAction func shuffleButton(_ sender: UIButton) {
-        game.cards = game.shuffleCards(cards: game.cards)
-    }
 
     lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
 
@@ -24,7 +21,6 @@ class ViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         game.cards = game.shuffleCards(cards: game.cards)
     }
 
@@ -46,7 +42,6 @@ class ViewController: UIViewController{
             } else {
                 button.setTitle("", for: UIControl.State.normal)
                 button.backgroundColor = card.isMatched ? #colorLiteral(red: 0.999968946, green: 0.6284034579, blue: 0.263615257, alpha: 0) : #colorLiteral(red: 0.999968946, green: 0.6284034579, blue: 0.263615257, alpha: 1)
-
             }
         }
     }
@@ -60,6 +55,7 @@ class ViewController: UIViewController{
     }
 
     @IBAction func restartGame(_ sender: UIButton) {
+        flipCount = 0
         resetCards()
         game.restartGame()
     }
