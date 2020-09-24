@@ -9,33 +9,54 @@
 import UIKit
 
 class ViewController: UIViewController{
+    private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
+    
+    var numberOfPairsOfCards: Int {
+        return (cardButtons.count + 1) / 2
+    }
+    
+    private(set) var flipCount = 0 {
+        didSet {
+            flipCountLabel.text = "Flips: \(flipCount)"
+        }
+    }
+    
+    @IBOutlet private weak var flipCountLabel: UILabel!
+    @IBOutlet private var cardButtons: [UIButton]!
+    
+    @IBAction private func restartGame(_ sender: UIButton) {
+        flipCount = 0
+        resetCards()
+        game.restartGame()
+    }
 
-    @IBOutlet weak var flipCountLabel: UILabel!
-    @IBOutlet var cardButtons: [UIButton]!
-
-    lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
-
-    var flipCount = 0 { didSet { flipCountLabel.text = "Flips: \(flipCount)" } }
-    var emojiChoices = ["😉", "😜", "🤢", "👻", "👺", "😈", "😀", "😼"]
-    var emoji = [Int:String]()
-
+    @IBAction private func touchCard(_ sender: UIButton) {
+        flipCount += 1
+        if let cardNumber = cardButtons.firstIndex(of: sender) {
+            game.chooseCard(at: cardNumber)
+            updateViewFromModel()
+        } else {
+            print("chosen card was not in cardButtons")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         game.cards = game.shuffleCards(cards: game.cards)
     }
 
-    func resetCards() {
+    private func resetCards() {
         for index in cardButtons.indices {
             let button = cardButtons[index]
             let card = game.cards[index]
-            if card.isFaceUp {
+            if card.isFaceUp || game.cards[index].isMatched {
                 button.backgroundColor =  #colorLiteral(red: 0.999968946, green: 0.6284034579, blue: 0.263615257, alpha: 1)
                 button.setTitle("", for: UIControl.State.normal)
             }
         }
     }
 
-    func updateViewFromModel() {
+    private func updateViewFromModel() {
         for index in cardButtons.indices {
             let button = cardButtons[index]
             let card = game.cards[index]
@@ -48,29 +69,15 @@ class ViewController: UIViewController{
             }
         }
     }
+ 
+    private var emojiChoices = ["🥶", "😜", "🤢", "👻", "👺", "😈", "😡", "🐷"]
+    private var emoji = [Int:String]()
     
-    func emoji(for card: Card) -> String {
+    private func emoji(for card: Card) -> String {
         if emoji[card.identifier] == nil, emojiChoices.count > 0 {
                 let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
                 emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
         }
         return emoji[card.identifier] ?? "?"
     }
-
-    @IBAction func restartGame(_ sender: UIButton) {
-        flipCount = 0
-        resetCards()
-        game.restartGame()
-    }
-
-    @IBAction func touchCard(_ sender: UIButton) {
-        flipCount += 1
-        if let cardNumber = cardButtons.firstIndex(of: sender) {
-            game.chooseCard(at: cardNumber)
-            updateViewFromModel()
-        } else {
-            print("chosen card was not in cardButtons")
-        }
-    }
-
 }
