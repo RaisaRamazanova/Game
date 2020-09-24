@@ -26,8 +26,9 @@ class ViewController: UIViewController{
     
     @IBAction private func restartGame(_ sender: UIButton) {
         flipCount = 0
-        resetCards()
         game.restartGame()
+        updateViewFromModel()
+        
     }
 
     @IBAction private func touchCard(_ sender: UIButton) {
@@ -45,16 +46,6 @@ class ViewController: UIViewController{
         game.cards = game.shuffleCards(cards: game.cards)
     }
 
-    private func resetCards() {
-        for index in cardButtons.indices {
-            let button = cardButtons[index]
-            let card = game.cards[index]
-            if card.isFaceUp || game.cards[index].isMatched {
-                button.backgroundColor =  #colorLiteral(red: 0.999968946, green: 0.6284034579, blue: 0.263615257, alpha: 1)
-                button.setTitle("", for: UIControl.State.normal)
-            }
-        }
-    }
 
     private func updateViewFromModel() {
         for index in cardButtons.indices {
