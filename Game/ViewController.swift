@@ -15,38 +15,33 @@ class ViewController: UIViewController
     var numberOfPairsOfCards: Int {
         return (cardButtons.count + 1) / 2
     }
-    
-    private(set) var flipCount = 0 {
-        didSet {
-            updateFlipCountLabel()
-        }
-    }
-    
+
     private func updateFlipCountLabel() {
         let attributes: [NSAttributedString.Key:Any] = [
             .strokeWidth : 5.0,
             .strokeColor : #colorLiteral(red: 0.999968946, green: 0.6284034579, blue: 0.263615257, alpha: 1)
         ]
-        let attributedString = NSAttributedString(string: "Flips: \(flipCount)", attributes: attributes)
+        let attributedString = NSAttributedString(string: "Flips: \(game.flipCount)", attributes: attributes)
         flipCountLabel.attributedText = attributedString
     }
     
     @IBOutlet private weak var flipCountLabel: UILabel!{
-        didSet {
-            updateFlipCountLabel()
-        }
-    }
+       didSet {
+           updateFlipCountLabel()
+      }
+   }
+    
     @IBOutlet private var cardButtons: [UIButton]!
     
     @IBAction private func restartGame(_ sender: UIButton) {
-        flipCount = 0
         game.restartGame()
+        updateFlipCountLabel()
         updateViewFromModel()
         
     }
-
     @IBAction private func touchCard(_ sender: UIButton) {
-        flipCount += 1
+        game.flipCount += 1
+        updateFlipCountLabel()
         if let cardNumber = cardButtons.firstIndex(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
@@ -60,7 +55,6 @@ class ViewController: UIViewController
         game.cards = game.shuffleCards(cards: game.cards)
     }
     
-
     private func updateViewFromModel() {
         for index in cardButtons.indices {
             let button = cardButtons[index]

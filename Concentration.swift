@@ -12,6 +12,8 @@ struct Concentration
 {
     var cards = [Card]()
     
+    var flipCount = 0
+    
     private var indexOfOneAndOnlyFaceCard: Int? {
         get {
             return cards.indices.filter { cards[$0].isFaceUp }.oneAndOnly
@@ -22,7 +24,8 @@ struct Concentration
             }
         }
     }
-    
+
+        
     mutating func chooseCard(at index:Int) {
         assert(cards.indices.contains(index), "Concentration.shooseCard(at: \(index)): chosen index not in the cards")
         if !cards[index].isMatched {
@@ -45,6 +48,7 @@ struct Concentration
     }
 
     mutating func restartGame() {
+        self.flipCount = 0
         for (index, _) in cards.enumerated() {
             cards[index].isMatched = false
             cards[index].isFaceUp = false
