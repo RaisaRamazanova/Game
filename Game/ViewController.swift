@@ -39,11 +39,11 @@ class ViewController: UIViewController
         updateViewFromModel()
         
     }
-    @IBAction private func touchCard(_ sender: UIButton) {
-        game.flipCount += 1
-        updateFlipCountLabel()
+    @IBAction private func touchCard(_ sender: UIButton) {        
         if let cardNumber = cardButtons.firstIndex(of: sender) {
             game.chooseCard(at: cardNumber)
+            game.flipCount += 1
+            updateFlipCountLabel()
             updateViewFromModel()
         } else {
             print("chosen card was not in cardButtons")
