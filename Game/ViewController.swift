@@ -34,12 +34,24 @@ class ViewController: UIViewController
     @IBOutlet private var cardButtons: [UIButton]!
     
     @IBAction private func restartGame(_ sender: UIButton) {
-        game.restartGame()
-        updateFlipCountLabel()
-        updateViewFromModel()
+        let alertController = UIAlertController(
+            title: "New game",
+            message: "Do you want to restart?",
+            preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(
+                                    title: "Yes",
+                                    style: UIAlertAction.Style.default,
+                                    handler:{ _ in
+                                        self.game.restartGame()
+                                        self.updateFlipCountLabel()
+                                        self.updateViewFromModel()
+                                    }))
+        alertController.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+        
         
     }
-    @IBAction private func touchCard(_ sender: UIButton) {        
+    @IBAction private func touchCard(_ sender: UIButton) {
         if let cardNumber = cardButtons.firstIndex(of: sender) {
             game.chooseCard(at: cardNumber)
             game.flipCount += 1
